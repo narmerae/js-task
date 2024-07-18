@@ -17,39 +17,61 @@
     </style>
 </head>
 <body onload="getDriverList()">
-<h1 class="text-center">Fetch Task</h1>
-<h2 class="text-center">F1 Driver Fetch</h2>
-<div class="container pt-3 d-flex align-items-center justify-content-center">
+<div class="container d-flex gap-4 flex-column">
 
-    <div class="col-md-8 d-flex align-items-center justify-content-center">
-        <div class="search d-flex gap-3">
-            <i class="fa fa-search"></i>
-            <label>
-                <input type="text" placeholder="Enter a driver number" id="searchbar" class="form-control">
-            </label>
-            <button class="btn btn-primary" onclick="getDriver()">Search</button>
+    <h1 class="text-center">Fetch Task</h1>
+    <h2 class="text-center">F1 Driver Fetch</h2>
+
+    <div class="container pt-3 d-flex align-items-center justify-content-center">
+
+        <div class="col-md-8 d-flex align-items-center justify-content-center">
+            <div class="search d-flex gap-3 align-items-center justify-content-center">
+                <i class="fa fa-search justify-content-center"></i>
+                <label>
+                    <input type="text" placeholder="Enter a driver number" id="searchBar" class="form-control">
+                </label>
+                <button class="btn btn-primary" onclick="getDriver()">Search</button>
+            </div>
         </div>
+
+    </div>
+    <div class="container flex-column gap-3 pt-2 d-flex justify-content-center align-items-center">
+
+        <p id="nameDriver"></p>
+        <img id="imageDriver" src="" alt="Driver Image" style="display:none">
+        <br>
+        <iframe id="easterEgg" src=""></iframe>
+        <h1 class="mt-3" id="easterText"></h1>
+
+    </div>
+    <div class="container d-flex mb-2 align-items-center justify-content-center">
+
+        <div class="row">
+            <div class="col-md-12 d-flex">
+                <div class="search d-flex align-items-center justify-content-center gap-3">
+                    <i class="fa fa-search justify-content-center"></i>
+                    <label>
+                        <input type="text" placeholder="Enter a driver name" oninput="searchDriverList()" id="searchBarList" class="form-control">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container mt-2">
+
+        <table id="driverTable" class="table">
+            <tr>
+                <th>Driver Number</th>
+                <th>Driver Full Name</th>
+                <th>Team Name</th>
+                <th>Team Color</th>
+            </tr>
+        </table>
+
     </div>
 </div>
-<div class="container flex-column gap-2 pt-5 d-flex justify-content-center align-items-center">
-    <p id="nameDriver">
 
-    </p>
-    <img id="imageDriver" src="" alt="Driver Image" style="display:none">
-    <br>
-    <iframe id="easterEgg" src=""></iframe>
-    <h1 id="easterText"></h1>
-</div>
-<div class="container">
-    <table id="driverTable" class="table">
-        <tr>
-            <th>Driver Number</th>
-            <th>Driver Full Name</th>
-            <th>Team Name</th>
-            <th>Team Color</th>
-        </tr>
-    </table>
-</div>
 <script src="script.js"></script>
 </body>
 </html>
