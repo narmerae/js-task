@@ -28,18 +28,21 @@
     <img class="" src="https://logos-world.net/wp-content/uploads/2023/12/F1-Logo.png" width="50%" alt="F1 logo">
 
     <div class="container pt-3 d-flex align-items-center justify-content-center">
-    <div class="row">
-        <div class="d-flex align-items-center justify-content-center">
-            <div class="search d-flex gap-3 align-items-center justify-content-center">
-                <i class="fa fa-search justify-content-center"></i>
-                <label>
-                    <input type="text" placeholder="Enter a driver number" id="searchBar" class="form-control">
-                </label>
-                <button class="btn btn-primary" onclick="getDriver()">Search</button>
+
+        <div class="row">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="search d-flex gap-3 align-items-center justify-content-center">
+                    <i class="fa fa-search justify-content-center"></i>
+                    <label>
+                        <input type="text" placeholder="Enter a driver number" id="searchBar" class="form-control">
+                    </label>
+                    <button class="btn btn-primary" onclick="getDriver()">Search</button>
+                </div>
             </div>
         </div>
+
     </div>
-    </div>
+
     <div class="container flex-column gap-3 pt-2 d-flex justify-content-center align-items-center">
 
         <p id="nameDriver"></p>
@@ -49,6 +52,7 @@
         <h1 class="mt-3" id="easterText"></h1>
 
     </div>
+
     <div class="container d-flex mb-2 align-items-center justify-content-center">
 
             <div class="search d-flex align-items-center justify-content-center gap-3">
@@ -58,9 +62,8 @@
                     </label>
                 </div>
             <button class="btn btn-primary" id="clearButton" onclick="clearSearchBar()">Clear</button>
-            </div>
+    </div>
 
-</div>
     <div class="container mt-2">
 
         <table id="driverTable" class="table">
@@ -73,7 +76,7 @@
         </table>
 
     </div>
-
+</div>
 <script src="script.js"></script>
 </body>
 </html>
