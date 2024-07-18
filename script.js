@@ -15,6 +15,7 @@ async function getDriver() {
         if(!response.ok) {
             throw new Error(`Response status is ${response.status}`);
         }
+        
         const data = await response.json();
         
         switch (data[0].driver_number) {
