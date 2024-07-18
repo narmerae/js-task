@@ -7,10 +7,48 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    <title>Document</title>
+    <title>Inspira Group Task Fetch</title>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
-<body>
+<body onload="getDriverList()">
+<h1 class="text-center">Fetch Task</h1>
+<h2 class="text-center">F1 Driver Fetch</h2>
+<div class="container pt-3 d-flex align-items-center justify-content-center">
 
+    <div class="col-md-8 d-flex align-items-center justify-content-center">
+        <div class="search d-flex gap-3">
+            <i class="fa fa-search"></i>
+            <label>
+                <input type="text" placeholder="Enter a driver number" id="searchbar" class="form-control">
+            </label>
+            <button class="btn btn-primary" onclick="getDriver()">Search</button>
+        </div>
+    </div>
+</div>
+<div class="container flex-column gap-2 pt-5 d-flex justify-content-center align-items-center">
+    <p id="nameDriver">
+
+    </p>
+    <img id="imageDriver" src="" alt="Driver Image" style="display:none">
+    <br>
+    <iframe id="easterEgg" src=""></iframe>
+    <h1 id="easterText"></h1>
+</div>
+<div class="container">
+    <table id="driverTable" class="table">
+        <tr>
+            <th>Driver Number</th>
+            <th>Driver Full Name</th>
+            <th>Team Name</th>
+            <th>Team Color</th>
+        </tr>
+    </table>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
