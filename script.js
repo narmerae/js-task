@@ -34,6 +34,7 @@ async function getDriver() {
 
 async function getDriverList() {
     const url = "https://api.openf1.org/v1/drivers"
+    let driverNumberArray = [];
     try {
         const response = await fetch(url)
         if(!response.ok) {
@@ -41,19 +42,22 @@ async function getDriverList() {
         }
         const data = await response.json();
         console.log(data)
-        
         let table = document.getElementById("driverTable")
-        
-        for (let i = 0; i < 25; i++){
-            let row = `<tr>
+            for (let i = 0; i < 50; i++){
+                if(!driverNumberArray.includes(data[i].driver_number)) {
+                    let row = `<tr>
                                    <td>${data[i].driver_number}</td>
                                    <td>${data[i].full_name}</td>
                                    <td>${data[i].team_name}</td>
-                                   <td><></td>
+                                   <td><i class="fa-solid fa-circle" style="color:#${data[i].team_colour};"></i></td>
                               </tr>
                                   `
-            table.innerHTML += row;
-        }
+                    table.innerHTML += row;
+                    driverNumberArray.push(data[i].driver_number)
+                    console.log(driverNumberArray)
+                }
+            }
+
     }
     catch (error) {
         console.error("Error is " + error.message);
