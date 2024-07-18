@@ -1,7 +1,9 @@
 
 async function getDriver() {
-    let numberDriver = document.getElementById("searchbar").value
+    
+    
     const url = `https://api.openf1.org/v1/drivers?driver_number=${numberDriver}&session_key=9158`
+    
     try {
         const response = await fetch(url);
         
@@ -12,35 +14,47 @@ async function getDriver() {
         
         switch (data[0].driver_number) {
             case 14:
-                document.getElementById("easterEgg").src = "https://www.youtube.com/embed/0Y2PPxrBJt8?si=M7Z8g18bXEoclfi5"
-                document.getElementById("easterText").innerText = "VAMOOOOSSSSSSS!!!!!"
+                easterEgg.src = "https://www.youtube.com/embed/0Y2PPxrBJt8?si=M7Z8g18bXEoclfi5"
+                easterText.innerText = "VAMOOOOSSSSSSS!!!!! 🔥🔥🔥🔥"
                 break;
             case 1:
-                document.getElementById("easterEgg").src= "https://www.youtube.com/embed/BLdVvIwUXK4?si=n6IE87uufaDKb3L_"
-                document.getElementById("easterText").innerText = "SID 🤓"
+                easterEgg.src = "https://www.youtube.com/embed/BLdVvIwUXK4?si=n6IE87uufaDKb3L_"
+                easterText.innerText = "SID 🤓💩"
+                break;
+            case 10:
+                easterEgg.src = "https://www.youtube.com/embed/RCSutBfECNQ?si=OE5qW_ENeZGS-Wx9"
+                easterText.innerText = "THE GOAT 🐐"
+                break;
             default:
                 break;
         }
         
-        document.getElementById("imageDriver").src = data[0].headshot_url;
-        document.getElementById("imageDriver").style.display = "block";
-        document.getElementById("nameDriver").innerText = data[0].full_name
+        imageDriver.src = data[0].headshot_url;
+        imageDriver.style.display = "block";
+        nameDriver.innerText = data[0].full_name
     }
+    
     catch (error) {
         console.error("Error is " + error.message);
         alert("Driver doesn't exist");
     }
+    
 }
 
 async function getDriverList() {
+    
     const url = "https://api.openf1.org/v1/drivers"
     let driverNumberArray = [];
+    
     try {
         const response = await fetch(url)
+        
         if(!response.ok) {
             throw new Error(`Response status is ${response.status}`)
         }
+        
         const data = await response.json();
+        alert("Data successfully loaded!");
         console.log(data)
         let table = document.getElementById("driverTable")
             for (let i = 0; i < 50; i++){
@@ -54,14 +68,39 @@ async function getDriverList() {
                                   `
                     table.innerHTML += row;
                     driverNumberArray.push(data[i].driver_number)
-                    console.log(driverNumberArray)
                 }
             }
-
+            
     }
+    
     catch (error) {
         console.error("Error is " + error.message);
         alert("Something went wrong!");
     }
+    
+}
+
+function searchDriverList() {
+    
+    const driverSearchName = document.getElementById("searchBarList").value.toLowerCase();
+    const driverTable = document.getElementById("driverTable");
+    const rows = driverTable.getElementsByTagName("tr");
+    
+    for (let i = 1; i < rows.length; i++) {
+        let driverNameTd = rows[i].getElementsByTagName("td")[1];
+        
+        if (driverNameTd) {
+            let driverName = driverNameTd.textContent || driverNameTd.innerText;
+            if (driverName.toLowerCase().indexOf(driverSearchName) > -1) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+        
+    }
+    
+}
+
 }
 
