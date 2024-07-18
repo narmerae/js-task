@@ -1,6 +1,11 @@
 
 async function getDriver() {
     
+    const easterEgg = document.getElementById("easterEgg")
+    const easterText = document.getElementById("easterText")
+    const imageDriver =  document.getElementById("imageDriver")
+    const numberDriver = document.getElementById("searchBar").value
+    const nameDriver = document.getElementById("nameDriver")
     
     const url = `https://api.openf1.org/v1/drivers?driver_number=${numberDriver}&session_key=9158`
     
