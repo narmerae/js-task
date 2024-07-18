@@ -107,5 +107,14 @@ function searchDriverList() {
     
 }
 
+function clearSearchBar() {
+
+    const driverSearchName = document.getElementById("searchBarList");
+    const driverSearchButton = document.getElementById("clearButton");
+    driverSearchButton.addEventListener("click",async () => {
+        driverSearchName.value = "";
+        searchDriverList()
+    });
+
 }
 
