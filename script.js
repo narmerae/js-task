@@ -112,7 +112,7 @@ function clearSearchBar() {
 
     const driverSearchName = document.getElementById("searchBarList");
     const driverSearchButton = document.getElementById("clearButton");
-    driverSearchButton.addEventListener("click",async () => {
+    driverSearchButton.addEventListener("click", () => {
         driverSearchName.value = "";
         searchDriverList()
     });
