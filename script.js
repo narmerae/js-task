@@ -97,7 +97,7 @@ function searchDriverList() {
     const driverTable = document.getElementById("driverTable");
     const rows = driverTable.getElementsByTagName("tr");
     
-    for (let i = 1; i < rows.length; i++) {
+    for (let i = 0; i < rows.length; i++) {
         let driverNameTd = rows[i].getElementsByTagName("td")[1];
         
         if (driverNameTd) {
