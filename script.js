@@ -50,7 +50,7 @@ async function getDriver() {
 async function getDriverList() {
     
     const url = "https://api.openf1.org/v1/drivers"
-    let driverNumberArray = [];
+    let driverNumberSet = new Set();
     
     try {
         const response = await fetch(url)
@@ -63,21 +63,26 @@ async function getDriverList() {
         alert("Data successfully loaded!");
         console.log(data)
         let table = document.getElementById("driverTable")
-            for (let i = 0; i < 50; i++){
-                if(!driverNumberArray.includes(data[i].driver_number)) {
-                    let row = `<tr>
-                                   <td>${data[i].driver_number}</td>
-                                   <td>${data[i].full_name}</td>
-                                   <td>${data[i].team_name}</td>
-                                   <td><i class="fa-solid fa-circle" style="color:#${data[i].team_colour};"></i></td>
-                              </tr>
-                                  `
-                    table.innerHTML += row;
-                    driverNumberArray.push(data[i].driver_number)
+        table.innerHTML = data.splice(0, 50)
+            .filter(item => {
+                const isUnique = !driverNumberSet.has(item.driver_number);
+                if (isUnique) {
+                    driverNumberSet.add(item.driver_number);
                 }
-            }
-            
+                return isUnique;
+            })
+            .map(item => {
+                driverNumberSet.add(item.driver_number);
+                return `<tr>
+                               <td>${item.driver_number}</td>
+                               <td>${item.full_name}</td>
+                               <td>${item.team_name}</td>
+                               <td><i class="fa-solid fa-circle" style="color:#${item.team_colour};"></i></td>
+                          </tr>`;
+            }).join('');
+        
     }
+    
     
     catch (error) {
         console.error("Error is " + error.message);
